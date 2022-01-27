@@ -1,44 +1,23 @@
-# Box Model- Excel Exercise
-
-An excel sheet is supplied that can model steady state saturated flow through a layered (or homogeneous) 1D vertical column with constant head top and bottom boundary conditions.   
-
-## Model Description
-​- The model that you have been provided is set up for a homogeneous medium.  You will be asked to modify the K distribution to form a layered medium to answer some of the questions.  
-- Remember that the focus of this course is primarily to use models to improve your hydrogeologic understanding.  In other words, getting the model to run correctly is step one,
-then The Challenge begins!
-
-## The Challenge
-1. Show, based on the flux with depth, that the model is steady state.  Repeat this for a homogeneous and for a heterogeneous column.
-1. Show that the steady state flux agrees with the direct calculation based on the harmonic mean average K.  Write the equation defining the direct calculation of the flux.
-1. Show the steady state head profile for a column with approximately equal-thickness layers that have different K values.  
-1. Use the head profile to explain WHY the equivalent hydraulic conductivity, Keq, is closer to the lower of the two K values.
-
-
-## Correct Key Figures
-In this case, your model really should work.  One thing that might hang you up is - you have to have iterative solutions activated in Excel.  If you get a 'circular reference' error, search online for how to fix this.  If your model just bombs, shut it down without saving and reopen it.
-
-Just to be sure that you have the right figures upon which to base your answers to The Challenge, I have included screenshots of the model with a homogeneous solution and another with a heterogeneous solution.  You do not need to use the same boundary condition or K values that I used.  In fact, I would encourage you to play around with the model a bit!
-
-![](assets/The_Challenge-e7287a98.JPG)
-*Figure 1: Spreadsheet with a solution for a homogeneous column.*
-
-![](HW1_heterogeneous.jpg)
-![](assets/The_Challenge-261d7adc.JPG)
-
-*Figure 2: Spreadsheet with a solution for a two-layer heterogeneous column.*
-
-
-## Discussion Points
-*In addition to The Challenge, start thinking about the following ideas:*
-1. What are boundary conditions?  Answer this both conceptually and mathematically.
-1. What are model parameters?  How do they (and don't they) represent the actual subsurface?
-1. What are steady state conditions and how can they be identified from the Excel model results?
-1. Can you imagine how the model inputs could be stored in separate files rather than other spreadsheet cells?  Describe the flow of information from a file that describes the other files that contain model-specific information about the system.
-1. What is an iterative solution?  Can you explain it to a hydrologist who is not a modeler?  Can you describe (or imagine) how Excel finds the solution?
-1. What is a direct solution?  What are its (dis)advantages compared to an iterative (numerical) solution?
+# HW 1 The Challenge - Justin Headley
+## 1. Show, based on the flux with depth, that the model is steady state.  Repeat this for a homogeneous and for a heterogeneous column.
+    In the homogenous column, I have shown that the unit flux throughout the entire column is a constant 0.0075, which means an equal amount of mass is entering the column as leaving it, for a net change in mass of 0. This is steady-state. For the heterogeneous column, although K changes throughout the column, q is still a constant 0.0097, also showing steady-state conditions.  
    
-## Glossary Questions: 
-To be added to our class notes glossary (see the link in the course readme). Each questions should have a 1-2 paragraph answer. Feel free to add links to references or helpful graphics. 
-1.  What is a model?  What is a ground water model?  How are ground water models used?
-2.  What are model parameters?  How do they (and don't they) represent the actual subsurface?
-3.  What does it mean for a model to be in steady state? Discuss your answer with respect to both heads and fluxes. What is the utility of steady state solutions in the practice of groundwater modeling (i.e. when and why do we use steady state solutions)?
+  ## 2. Show that the steady state flux agrees with the direct calculation based on the harmonic mean average K.  Write the equation defining the direct calculation of the flux.
+    For both columns, the steady-state flux iteratively calculated in column K is the same as the direct solution in cell C10. The direct solution is calculated with Darcy's law: q=K*(dH/dz).
+  
+    In this case, K is Keq, which is a harmonic mean K. For the homogeneous column, K is constant, but for the heterogeneous column, 
+   
+     Keq = (Total # of cells) / [(# Z1 Cells / Z1 K) +(Z2 Cells / Z2 K)] 
+
+     Keq = 12 / [(6.5 / .005)+ (5.5 / .010)] = .00649
+
+
+## 3. Show the steady state head profile for a column with approximately equal-thickness layers that have different K values.
+    The heterogeneous column has approximately the top half of the column with a K value of 0.005 and the bottom half with a K value of 0.010. Although both total hydraulic head (H) and pressure head (psi) decrease with height throughout the column, flux (q) is constant. 
+
+## 4. Use the head profile to explain WHY the equivalent hydraulic conductivity, Keq, is closer to the lower of the two K values.
+    I've added a column that shows pressure head specifically, and also added pressure head values to the graph. The graph shows that the rate of change of pressure head increases greatly in the cells with the lower associated K values. This is because H = z + psi, and the rate of chane of z is constant (it's just a spatial dimenson). 
+
+    The "traffic jam" in the column is the part with the lower K. This lower hydraulic conductivity causes a bottleneck that makes the Keq of the column more closely resemble the lower K than the higher K. 
+
+    One important thing to note is that the "traffic jam" analogy does NOT mean that the water in the high-K part of the column is moving faster and then having to slow down. All the water in the column is still fluxing at the same rate, regardless of a particular cell's K. 
